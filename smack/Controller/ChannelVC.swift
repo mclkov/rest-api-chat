@@ -11,15 +11,21 @@ import UIKit
 class ChannelVC: UIViewController {
 
     // Outlets
-    
+    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
+        
+        loginBtn.addTarget(self, action: #selector(ChannelVC.loginButtonPressed), for: .touchUpInside)
     }
 
+    @objc func loginButtonPressed ()
+    {
+        performSegue(withIdentifier: LOGIN_VC, sender: nil)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
