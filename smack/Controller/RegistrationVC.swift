@@ -10,10 +10,19 @@ import UIKit
 
 class RegistrationVC: UIViewController {
 
+    @IBOutlet weak var closeButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        closeButton.addTarget(self, action: #selector(self.closePressed), for: .touchUpInside)
+    }
+    
+    @objc func closePressed()
+    {
+//        dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: , sender: <#T##Any?#>)
     }
 
     override func didReceiveMemoryWarning() {

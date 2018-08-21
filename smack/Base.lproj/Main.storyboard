@@ -258,6 +258,16 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ips-7X-s2k">
+                                <rect key="frame" x="137" y="300" width="100" height="130"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="1NQ-MZ-dli"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="Choose avatar">
+                                    <color key="titleColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RiZ-9o-awU">
                                 <rect key="frame" x="331" y="28" width="28" height="28"/>
                                 <state key="normal" image="closeButton"/>
@@ -325,13 +335,10 @@
                                     <constraint firstAttribute="height" constant="100" id="oFi-9S-HbG"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ips-7X-s2k">
-                                <rect key="frame" x="137" y="300" width="100" height="130"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="130" id="1NQ-MZ-dli"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WNX-DU-ujz">
+                                <rect key="frame" x="118" y="435" width="139" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="Choose avatar">
+                                <state key="normal" title="Change backgroud color">
                                     <color key="titleColor" red="0.35686274509999999" green="0.62352941179999999" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
@@ -339,11 +346,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="jVZ-2E-ess" secondAttribute="bottom" constant="20" id="13d-qu-18f"/>
+                            <constraint firstItem="WNX-DU-ujz" firstAttribute="centerX" secondItem="KzK-dR-bgL" secondAttribute="centerX" id="3fu-0W-wlk"/>
                             <constraint firstItem="Ips-7X-s2k" firstAttribute="centerX" secondItem="KzK-dR-bgL" secondAttribute="centerX" id="8Tl-Gh-qex"/>
                             <constraint firstItem="Ips-7X-s2k" firstAttribute="top" secondItem="IQ8-WN-Mjc" secondAttribute="top" id="9tT-Vt-tsT"/>
                             <constraint firstItem="EhU-QG-p3a" firstAttribute="centerX" secondItem="KzK-dR-bgL" secondAttribute="centerX" id="Amh-To-ARN"/>
                             <constraint firstItem="iuf-3b-NNe" firstAttribute="centerX" secondItem="KzK-dR-bgL" secondAttribute="centerX" id="I34-kB-5Oo"/>
                             <constraint firstItem="IQ8-WN-Mjc" firstAttribute="centerX" secondItem="KzK-dR-bgL" secondAttribute="centerX" id="PO2-j8-nLB"/>
+                            <constraint firstItem="WNX-DU-ujz" firstAttribute="top" secondItem="Ips-7X-s2k" secondAttribute="bottom" constant="5" id="Qjx-HY-M3k"/>
                             <constraint firstItem="EhU-QG-p3a" firstAttribute="top" secondItem="KzK-dR-bgL" secondAttribute="topMargin" constant="40" id="deS-l1-7Sh"/>
                             <constraint firstItem="Ips-7X-s2k" firstAttribute="width" secondItem="IQ8-WN-Mjc" secondAttribute="width" id="fnb-rX-gyk"/>
                             <constraint firstItem="RiZ-9o-awU" firstAttribute="top" secondItem="KzK-dR-bgL" secondAttribute="topMargin" constant="8" id="g8O-E7-Sss"/>
@@ -353,6 +362,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="RiZ-9o-awU" secondAttribute="trailing" id="tW5-Nu-Z4a"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="RiZ-9o-awU" id="ZSs-Hl-Dm3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJQ-Bm-zdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
