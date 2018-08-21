@@ -18,11 +18,12 @@ class RegistrationVC: UIViewController {
         // Do any additional setup after loading the view.
         closeButton.addTarget(self, action: #selector(self.closePressed), for: .touchUpInside)
     }
+
     
     @objc func closePressed()
     {
 //        dismiss(animated: true, completion: nil)
-        performSegue(withIdentifier: , sender: <#T##Any?#>)
+        performSegue(withIdentifier: UNWIND, sender: nil)
     }
 
     override func didReceiveMemoryWarning() {

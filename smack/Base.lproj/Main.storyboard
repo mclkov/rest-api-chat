@@ -364,9 +364,11 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="RiZ-9o-awU" id="ZSs-Hl-Dm3"/>
+                        <segue destination="tfs-vI-0Ry" kind="unwind" identifier="unwind_to_channel_vc" unwindAction="prepareForUnwindWithSegue:" id="OcM-9C-lqg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yJQ-Bm-zdB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="tfs-vI-0Ry" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2080.8000000000002" y="-261.31934032983509"/>
         </scene>

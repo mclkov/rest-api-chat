@@ -11,4 +11,4 @@ import Foundation
 // Segues
 let LOGIN_VC = "login_vc"
 let REGISTRATION_VC = "registration_vc"
-
+let UNWIND = "unwind_to_channel_vc"
