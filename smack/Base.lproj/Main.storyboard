@@ -221,6 +221,7 @@
                             <constraint firstItem="vwr-z2-BuP" firstAttribute="centerX" secondItem="CbJ-Qq-bIW" secondAttribute="centerX" id="icf-sT-nkF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zuv-PL-igD" secondAttribute="trailing" id="ovM-xn-c1N"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="zCB-8k-hJf"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="zuv-PL-igD" id="NhE-Kp-VjN"/>
@@ -361,6 +362,7 @@
                             <constraint firstItem="iuf-3b-NNe" firstAttribute="top" secondItem="EhU-QG-p3a" secondAttribute="bottom" constant="40" id="oRU-pQ-WwZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RiZ-9o-awU" secondAttribute="trailing" id="tW5-Nu-Z4a"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Mre-ZO-zYG"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="RiZ-9o-awU" id="ZSs-Hl-Dm3"/>

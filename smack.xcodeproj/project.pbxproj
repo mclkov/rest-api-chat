@@ -21,6 +21,7 @@
 		600CB7BA212B08C90007465F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CB7B9212B08C90007465F /* Constants.swift */; };
 		600CB7BC212B0F6E0007465F /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CB7BB212B0F6E0007465F /* LoginVC.swift */; };
 		600CB7C0212C3CE00007465F /* RegistrationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CB7BF212C3CE00007465F /* RegistrationVC.swift */; };
+		600CB7C3212E85D80007465F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CB7C2212E85D80007465F /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		600CB7B9212B08C90007465F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		600CB7BB212B0F6E0007465F /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		600CB7BF212C3CE00007465F /* RegistrationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationVC.swift; sourceTree = "<group>"; };
+		600CB7C2212E85D80007465F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		B2D4A3863C02504EDC7AA9A9 /* Pods-smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smack/Pods-smack.debug.xcconfig"; sourceTree = "<group>"; };
 		CE01215A1F8F58A648668545 /* Pods_smack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0415424E0DD240D192BA23F /* Pods-smack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smack.release.xcconfig"; path = "Pods/Target Support Files/Pods-smack/Pods-smack.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		600CB76F21283D370007465F /* smack */ = {
 			isa = PBXGroup;
 			children = (
+				600CB7C1212E85C20007465F /* Services */,
 				600CB7B8212B08B70007465F /* Utilities */,
 				600CB7B121299EB10007465F /* Model */,
 				600CB7B021299EAD0007465F /* View */,
@@ -192,6 +195,14 @@
 				600CB7B9212B08C90007465F /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		600CB7C1212E85C20007465F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				600CB7C2212E85D80007465F /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		82C484B1A33A355308EBD19F /* Frameworks */ = {
@@ -396,6 +407,7 @@
 				600CB7B521299EF00007465F /* ChannelVC.swift in Sources */,
 				600CB7B321299EDE0007465F /* ChatVC.swift in Sources */,
 				600CB7BC212B0F6E0007465F /* LoginVC.swift in Sources */,
+				600CB7C3212E85D80007465F /* AuthService.swift in Sources */,
 				600CB7C0212C3CE00007465F /* RegistrationVC.swift in Sources */,
 				600CB7B7212ADE620007465F /* GradientView.swift in Sources */,
 				600CB77121283D370007465F /* AppDelegate.swift in Sources */,
