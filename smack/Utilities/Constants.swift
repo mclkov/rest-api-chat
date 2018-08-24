@@ -13,6 +13,7 @@ typealias CompletionHandler = (_ Success: Bool) -> ()
 // URL Constants
 let BASE_URL = "https://chatappo.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
+let URL_LOGIN = "\(BASE_URL)account/login"
 
 // Segues
 let LOGIN_VC = "login_vc"
@@ -23,3 +24,9 @@ let UNWIND = "unwind_to_channel_vc"
 let TOKEN_KEY = "token"
 let LOGGED_IN_KEY = "loggedIn"
 let USER_EMAIL = "userEmail"
+
+// Headers
+let HEADER =
+[
+    "Content-Type": "application/json; charset=utf-8"
+]

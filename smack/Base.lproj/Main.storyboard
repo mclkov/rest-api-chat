@@ -367,6 +367,7 @@
                             <constraint firstItem="iuf-3b-NNe" firstAttribute="top" secondItem="EhU-QG-p3a" secondAttribute="bottom" constant="40" id="oRU-pQ-WwZ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RiZ-9o-awU" secondAttribute="trailing" id="tW5-Nu-Z4a"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="4MJ-aT-hjI"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="RiZ-9o-awU" id="ZSs-Hl-Dm3"/>
