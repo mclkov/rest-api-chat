@@ -45,7 +45,7 @@ class RegistrationVC: UIViewController {
     
     @objc func pickAvatarPressed()
     {
-        
+        performSegue(withIdentifier: TO_PICK_AVATAR, sender: nil)
     }
     
     @objc func pickColorPressed()

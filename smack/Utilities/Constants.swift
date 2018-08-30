@@ -20,6 +20,7 @@ let URL_ADD_USER = "\(BASE_URL)user/add"
 let LOGIN_VC = "login_vc"
 let REGISTRATION_VC = "registration_vc"
 let UNWIND = "unwind_to_channel_vc"
+let TO_PICK_AVATAR = "to_pick_avatar"
 
 // User defaults
 let TOKEN_KEY = "token"
