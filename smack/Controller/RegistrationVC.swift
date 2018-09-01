@@ -37,6 +37,15 @@ class RegistrationVC: UIViewController {
         createAccountButton.addTarget(self, action: #selector(self.createAccountPressed), for: .touchUpInside)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        if UserDataService.instance.avatarName != ""
+        {
+            let currentAvatarName = UserDataService.instance.avatarName
+            userImg.image = UIImage(named: currentAvatarName)
+            avatarName = currentAvatarName
+        }
+    }
+    
     @objc func closePressed()
     {
 //        dismiss(animated: true, completion: nil)

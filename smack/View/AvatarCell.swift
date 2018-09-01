@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum AvatarType
+enum AvatarType: Int
 {
     case dark
     case light

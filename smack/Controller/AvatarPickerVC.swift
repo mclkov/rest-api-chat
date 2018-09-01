@@ -22,7 +22,7 @@ class AvatarPickerVC:
     @IBOutlet weak var backButton: UIButton!
     
     // Variables
-    var avatarType = AvatarType.dark
+    var avatarType: AvatarType = .dark
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,10 +52,35 @@ class AvatarPickerVC:
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 28
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var numberOfColumns: CGFloat = 3
+        if UIScreen.main.bounds.width > 320
+        {
+            numberOfColumns = 4
+        }
+        
+        let spaceBetweenCells: CGFloat = 10
+        let padding: CGFloat = 40
+        let cellDimension = ((collectionView.bounds.width - padding) - (numberOfColumns - 1) * spaceBetweenCells) / numberOfColumns
+        
+        return CGSize(width: cellDimension,  height: cellDimension)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var avatarName = "dark\(indexPath.item)"
+        if avatarType == .light
+        {
+            avatarName = "light\(indexPath.item)"
+        }
+        UserDataService.instance.setAvatarName(avatarName: avatarName)
+        self.dismiss(animated: true, completion: nil)
+    }
 
     @objc func segmentControlPressed()
     {
-        
+        avatarType = AvatarType(rawValue: segmentControl.selectedSegmentIndex)!
+        collectionView.reloadData()
     }
     
     @objc func backButtonPressed()
