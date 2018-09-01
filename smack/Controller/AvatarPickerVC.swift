@@ -21,6 +21,9 @@ class AvatarPickerVC:
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var backButton: UIButton!
     
+    // Variables
+    var avatarType = AvatarType.dark
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +39,7 @@ class AvatarPickerVC:
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "avatarCell", for: indexPath) as? AvatarCell
         {
+            cell.configureCell(index: indexPath.item, type: avatarType)
             return cell
         }
         return AvatarCell()

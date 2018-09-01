@@ -442,6 +442,9 @@
                                             <constraint firstAttribute="trailing" secondItem="YUA-Y2-F39" secondAttribute="trailing" constant="10" id="83X-NV-qYk"/>
                                             <constraint firstAttribute="bottom" secondItem="YUA-Y2-F39" secondAttribute="bottom" constant="10" id="kPP-lI-gyb"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="avatarImg" destination="YUA-Y2-F39" id="Ijp-1d-YDX"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -457,6 +460,7 @@
                             <constraint firstAttribute="trailing" secondItem="TpS-Oh-xhD" secondAttribute="trailing" id="mEJ-Zf-xhF"/>
                             <constraint firstItem="TpS-Oh-xhD" firstAttribute="leading" secondItem="xyu-Pj-Fk4" secondAttribute="leading" id="wMQ-af-uig"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="QcS-nv-WsQ"/>
                     </view>
                     <connections>
                         <outlet property="backButton" destination="dkW-E3-WdI" id="YbE-qD-ONL"/>
