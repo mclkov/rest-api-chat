@@ -107,6 +107,7 @@
                         <viewLayoutGuide key="safeArea" id="C1J-yi-oCQ"/>
                     </view>
                     <connections>
+                        <outlet property="avatarImage" destination="7H7-Va-xEC" id="3ZD-GN-z9Y"/>
                         <outlet property="loginBtn" destination="veE-z2-fLe" id="KH3-4F-THt"/>
                         <segue destination="3qo-1O-6nv" kind="show" identifier="login_vc" id="4me-0d-2WD"/>
                     </connections>

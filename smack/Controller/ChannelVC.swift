@@ -12,6 +12,8 @@ class ChannelVC: UIViewController {
 
     // Outlets
     @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var avatarImage: UIImageView!
+    
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue)
     {
         
@@ -22,8 +24,23 @@ class ChannelVC: UIViewController {
 
         // Do any additional setup after loading the view.
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
-        
         loginBtn.addTarget(self, action: #selector(ChannelVC.loginButtonPressed), for: .touchUpInside)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange), name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
+    }
+    
+    @objc func userDataDidChange(_ notif: Notification)
+    {
+        if AuthService.instance.isLoggedIn
+        {
+            loginBtn.setTitle(UserDataService.instance.name, for: .normal)
+            avatarImage.image = UIImage(named: UserDataService.instance.avatarName)
+            avatarImage.backgroundColor = UserDataService.instance.returnUIColor()
+        } else {
+            loginBtn.setTitle("Login", for: .normal)
+            avatarImage.image = UIImage(named: "manuProfileIcon")
+            avatarImage.backgroundColor = UIColor.clear
+        }
     }
 
     @objc func loginButtonPressed ()
