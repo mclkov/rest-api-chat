@@ -27,6 +27,8 @@
 		600CB7C3212E85D80007465F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CB7C2212E85D80007465F /* AuthService.swift */; };
 		600CB7C6212EE4AD0007465F /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 600CB7C5212EE4AD0007465F /* RoundedButton.swift */; };
 		609BA810213D2C8300357FA8 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BA80F213D2C8300357FA8 /* CircleImage.swift */; };
+		609BA8262141061200357FA8 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 609BA8242141061200357FA8 /* ProfileVC.swift */; };
+		609BA8272141061200357FA8 /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 609BA8252141061200357FA8 /* ProfileVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +76,8 @@
 		600CB7C2212E85D80007465F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		600CB7C5212EE4AD0007465F /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		609BA80F213D2C8300357FA8 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
+		609BA8242141061200357FA8 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		609BA8252141061200357FA8 /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
 		B2D4A3863C02504EDC7AA9A9 /* Pods-smack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-smack/Pods-smack.debug.xcconfig"; sourceTree = "<group>"; };
 		CE01215A1F8F58A648668545 /* Pods_smack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0415424E0DD240D192BA23F /* Pods-smack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smack.release.xcconfig"; path = "Pods/Target Support Files/Pods-smack/Pods-smack.release.xcconfig"; sourceTree = "<group>"; };
@@ -130,6 +134,7 @@
 		600CB76F21283D370007465F /* smack */ = {
 			isa = PBXGroup;
 			children = (
+				609BA82821410F3A00357FA8 /* XIB */,
 				600CB7C1212E85C20007465F /* Services */,
 				600CB7B8212B08B70007465F /* Utilities */,
 				600CB7B121299EB10007465F /* Model */,
@@ -181,6 +186,7 @@
 				600CB7BB212B0F6E0007465F /* LoginVC.swift */,
 				600CB7BF212C3CE00007465F /* RegistrationVC.swift */,
 				600441AB2137EB4C002A36AA /* AvatarPickerVC.swift */,
+				609BA8242141061200357FA8 /* ProfileVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -218,6 +224,14 @@
 				600441A921358654002A36AA /* UserDataService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		609BA82821410F3A00357FA8 /* XIB */ = {
+			isa = PBXGroup;
+			children = (
+				609BA8252141061200357FA8 /* ProfileVC.xib */,
+			);
+			path = XIB;
 			sourceTree = "<group>";
 		};
 		82C484B1A33A355308EBD19F /* Frameworks */ = {
@@ -347,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				609BA8272141061200357FA8 /* ProfileVC.xib in Resources */,
 				600CB77B21283D370007465F /* LaunchScreen.storyboard in Resources */,
 				600CB77821283D370007465F /* Assets.xcassets in Resources */,
 				600CB77621283D370007465F /* Main.storyboard in Resources */,
@@ -419,6 +434,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				609BA8262141061200357FA8 /* ProfileVC.swift in Sources */,
 				600CB7B521299EF00007465F /* ChannelVC.swift in Sources */,
 				600441AC2137EB4C002A36AA /* AvatarPickerVC.swift in Sources */,
 				600CB7C6212EE4AD0007465F /* RoundedButton.swift in Sources */,

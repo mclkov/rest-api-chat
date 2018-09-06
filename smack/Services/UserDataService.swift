@@ -38,6 +38,16 @@ class UserDataService
         self.avatarName = avatarName
     }
     
+    func logoutUser()
+    {
+        id = ""
+        avatarColor = ""
+        avatarName = ""
+        email = ""
+        name = ""
+        AuthService.instance.logoutUser()
+    }
+    
     func returnUIColor() -> UIColor
     {
         let scanner = Scanner(string: self.avatarColor)

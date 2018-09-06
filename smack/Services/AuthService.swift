@@ -71,6 +71,13 @@ class AuthService
         }
     }
     
+    func logoutUser()
+    {
+        self.isLoggedIn = false
+        self.userEmail = ""
+        self.authToken = ""
+    }
+    
     func loginUser(
         email: String,
         password: String,

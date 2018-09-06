@@ -38,14 +38,22 @@ class ChannelVC: UIViewController {
             avatarImage.backgroundColor = UserDataService.instance.returnUIColor()
         } else {
             loginBtn.setTitle("Login", for: .normal)
-            avatarImage.image = UIImage(named: "manuProfileIcon")
+            avatarImage.image = UIImage(named: "menuProfileIcon")
             avatarImage.backgroundColor = UIColor.clear
         }
     }
 
     @objc func loginButtonPressed ()
     {
-        performSegue(withIdentifier: LOGIN_VC, sender: nil)
+        if AuthService.instance.isLoggedIn
+        {
+            // Show profile page
+            let profile = ProfileVC()
+            profile.modalPresentationStyle = .custom
+            present(profile, animated: true, completion: nil)
+        }else{
+            performSegue(withIdentifier: LOGIN_VC, sender: nil)
+        }
     }
     
     override func didReceiveMemoryWarning() {
