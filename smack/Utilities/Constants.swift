@@ -15,6 +15,7 @@ let BASE_URL = "https://chatappo.herokuapp.com/v1/"
 let URL_REGISTER = "\(BASE_URL)account/register"
 let URL_LOGIN = "\(BASE_URL)account/login"
 let URL_ADD_USER = "\(BASE_URL)user/add"
+let URL_USER_BY_EMAIL = "\(BASE_URL)user/byEmail/"
 
 // Notification constants
 let NOTIFICATION_USER_DATA_CHANGED = Notification.Name("notificationUserDataChanged")
@@ -36,5 +37,11 @@ let USER_EMAIL = "userEmail"
 // Headers
 let HEADER =
 [
+    "Content-Type": "application/json; charset=utf-8"
+]
+
+let BEARER_HEADER =
+[
+    "Authorization" : "Bearer \(AuthService.instance.authToken)",
     "Content-Type": "application/json; charset=utf-8"
 ]
