@@ -29,7 +29,29 @@ class LoginVC: UIViewController {
     
     @objc func loginPressed()
     {
+        guard let login = loginTxt.text, loginTxt.text != "" else
+        {
+            return
+        }
+        guard let password = passwordTxt.text, passwordTxt.text != "" else
+        {
+            return
+        }
         
+        AuthService.instance.loginUser(email: login, password: password) { (success) in
+            if success {
+                
+                AuthService.instance.findUserByEmail(completion: { (success) in
+                    if success
+                    {
+                        print(UserDataService.instance.name, UserDataService.instance.avatarName)
+                        NotificationCenter.default.post(name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
+                        self.dismiss(animated: true, completion: nil)
+//                        self.performSegue(withIdentifier: UNWIND, sender: nil)
+                    }
+                })
+            }
+        }
     }
     
     @objc func closePressed()
