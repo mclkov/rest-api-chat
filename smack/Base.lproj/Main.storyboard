@@ -226,6 +226,9 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="zuv-PL-igD" id="NhE-Kp-VjN"/>
+                        <outlet property="loginButton" destination="0Ax-Jy-0ri" id="lbk-oj-rVO"/>
+                        <outlet property="loginTxt" destination="o8x-3D-hlf" id="Vm3-bv-kHu"/>
+                        <outlet property="passwordTxt" destination="hs2-kM-hkw" id="gbe-gP-F32"/>
                         <outlet property="registrationButton" destination="m8K-qx-sL5" id="cV7-wN-9bT"/>
                         <segue destination="tth-eS-TQu" kind="show" identifier="registration_vc" id="4pH-f7-AST"/>
                     </connections>
