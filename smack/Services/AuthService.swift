@@ -105,15 +105,8 @@ class AuthService
 //                    }
 //                }
                 
-                do
-                {
-                    guard let data = response.data else { return }
-                    let json = try JSON(data: data)
-                    self.userEmail = json["user"].stringValue
-                    self.authToken = json["token"].stringValue
-                } catch {
-                    print(error)
-                }
+                guard let data = response.data else { return }
+                self.setLoginInfo(data: data)
                 
                 self.isLoggedIn = true
                 completion(true)
@@ -148,19 +141,10 @@ class AuthService
             if response.result.error == nil
             {
                 guard let data = response.data else { return }
+                
+                self.setLoginInfo(data: data)
+                self.setUserInfo(data: data)
                 completion(true)
-                
-                
-                do
-                {
-                    guard let data = response.data else { return }
-                    let json = try JSON(data: data)
-                    self.userEmail = json["user"].stringValue
-                    self.authToken = json["token"].stringValue
-                    
-                } catch {
-                    print(error)
-                }
             }else{
                 completion(false)
                 debugPrint(response.result.error as Any)
@@ -175,11 +159,22 @@ class AuthService
         }
     }
     
+    func setLoginInfo(data: Data)
+    {
+        do
+        {
+            let json = try JSON(data: data)
+            self.userEmail = json["user"].stringValue
+            self.authToken = json["token"].stringValue
+        } catch {
+            print(error)
+        }
+    }
+    
     func setUserInfo(data: Data)
     {
         do
         {
-            guard let data = response.data else { return }
             let json = try JSON(data: data)
             
             let id = json["_id"].stringValue
@@ -189,8 +184,7 @@ class AuthService
             let name = json["name"].stringValue
             
             UserDataService.instance.setUserData(id: id, color: color, avatarName: avatarName, email: email, name: name)
-            
-            completion(true)
+
         } catch {
             print(error)
         }
