@@ -53,7 +53,7 @@
                                 <rect key="frame" x="0.0" y="127.5" width="375" height="424.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="yL2-NE-m0G">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="channelCell" id="yL2-NE-m0G" customClass="ChannelCell" customModule="smack" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yL2-NE-m0G" id="dmM-7K-ewr">
@@ -74,6 +74,9 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="channelLabel" destination="FpG-vP-a5F" id="mPJ-Ox-xsw"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -108,6 +111,7 @@
                     </view>
                     <connections>
                         <outlet property="avatarImage" destination="7H7-Va-xEC" id="3ZD-GN-z9Y"/>
+                        <outlet property="channelTV" destination="ODH-7R-jNN" id="x5J-Vv-1bJ"/>
                         <outlet property="loginBtn" destination="veE-z2-fLe" id="KH3-4F-THt"/>
                         <segue destination="3qo-1O-6nv" kind="show" identifier="login_vc" id="4me-0d-2WD"/>
                     </connections>
