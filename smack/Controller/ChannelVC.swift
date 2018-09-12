@@ -14,6 +14,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var channelTV: UITableView!
+    @IBOutlet weak var addChannelButton: UIButton!
     
     @IBAction func prepareForUnwind(segue: UIStoryboardSegue)
     {
@@ -26,6 +27,8 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         channelTV.delegate = self
         channelTV.dataSource = self
 
+        addChannelButton.addTarget(self, action: #selector(self.addChannelPressed), for: .touchUpInside)
+        
         // Do any additional setup after loading the view.
         self.revealViewController().rearViewRevealWidth = self.view.frame.size.width - 60
         loginBtn.addTarget(self, action: #selector(ChannelVC.loginButtonPressed), for: .touchUpInside)
@@ -35,6 +38,13 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupUserInfo()
+    }
+    
+    @objc func addChannelPressed()
+    {
+        let addChannel = AddChannelVC()
+        addChannel.modalPresentationStyle = .custom
+        present(addChannel, animated: true, completion: nil)
     }
     
     @objc func userDataDidChange(_ notif: Notification)

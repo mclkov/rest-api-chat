@@ -110,6 +110,7 @@
                         <viewLayoutGuide key="safeArea" id="C1J-yi-oCQ"/>
                     </view>
                     <connections>
+                        <outlet property="addChannelButton" destination="Fad-YH-mmq" id="Zr5-6v-A42"/>
                         <outlet property="avatarImage" destination="7H7-Va-xEC" id="3ZD-GN-z9Y"/>
                         <outlet property="channelTV" destination="ODH-7R-jNN" id="x5J-Vv-1bJ"/>
                         <outlet property="loginBtn" destination="veE-z2-fLe" id="KH3-4F-THt"/>
