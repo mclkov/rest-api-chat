@@ -34,6 +34,13 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         loginBtn.addTarget(self, action: #selector(ChannelVC.loginButtonPressed), for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange), name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
+        
+        SocketService.instance.getChannel { (success) in
+            if success
+            {
+                self.channelTV.reloadData()
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
