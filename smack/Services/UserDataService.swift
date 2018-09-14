@@ -45,7 +45,9 @@ class UserDataService
         avatarName = ""
         email = ""
         name = ""
+        
         AuthService.instance.logoutUser()
+        MessageService.instance.clearChannels()
     }
     
     func returnUIColor() -> UIColor

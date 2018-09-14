@@ -34,6 +34,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         loginBtn.addTarget(self, action: #selector(ChannelVC.loginButtonPressed), for: .touchUpInside)
         
         NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.userDataDidChange), name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChannelVC.channelsLoaded(_:)), name: NOTIFICATION_CHANNELS_LOADED, object: nil)
         
         SocketService.instance.getChannel { (success) in
             if success
@@ -49,14 +50,22 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     
     @objc func addChannelPressed()
     {
-        let addChannel = AddChannelVC()
-        addChannel.modalPresentationStyle = .custom
-        present(addChannel, animated: true, completion: nil)
+        if AuthService.instance.isLoggedIn
+        {
+            let addChannel = AddChannelVC()
+            addChannel.modalPresentationStyle = .custom
+            present(addChannel, animated: true, completion: nil)
+        }
     }
     
     @objc func userDataDidChange(_ notif: Notification)
     {
         self.setupUserInfo()
+    }
+    
+    @objc func channelsLoaded(_ notif: Notification)
+    {
+        channelTV.reloadData()
     }
 
     @objc func loginButtonPressed ()
@@ -83,6 +92,8 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
             loginBtn.setTitle("Login", for: .normal)
             avatarImage.image = UIImage(named: "menuProfileIcon")
             avatarImage.backgroundColor = UIColor.clear
+            
+            channelTV.reloadData()
         }
     }
     
@@ -111,6 +122,14 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return MessageService.instance.channels.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let channel = MessageService.instance.channels[indexPath.row]
+        MessageService.instance.selecteChannel = channel
+        NotificationCenter.default.post(name: NOTIFICATION_CHANNEL_SELECTED, object: nil)
+        
+        self.revealViewController().revealToggle(animated: true)
     }
     
     /*

@@ -12,7 +12,7 @@ class ChatVC: UIViewController {
 
     // Outlets
     @IBOutlet weak var menuBtn: UIButton!
-    
+    @IBOutlet weak var channelNameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,17 +22,49 @@ class ChatVC: UIViewController {
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.userDataDidChange(_:)), name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ChatVC.channelSelected(_:)), name: NOTIFICATION_CHANNEL_SELECTED, object: nil)
+        
         if AuthService.instance.isLoggedIn
         {
             AuthService.instance.findUserByEmail(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
             })
         }
-        
-        MessageService.instance.findAllChannels { (success) in
-            //
-        }
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func userDataDidChange(_ notif: Notification)
+    {
+//        setupUserInfo()
+        if AuthService.instance.isLoggedIn
+        {
+            // get channels
+            onLoginGetMessages()
+        }else{
+            channelNameLabel.text = "Please, Log In"
+        }
+    }
+    
+    @objc func channelSelected(_ notif: Notification)
+    {
+        updateWithChannel()
+    }
+    
+    func updateWithChannel()
+    {
+        let channelName = MessageService.instance.selecteChannel?.channelTitle ?? ""
+        channelNameLabel.text = "#\(channelName)"
+    }
+    
+    func onLoginGetMessages()
+    {
+        MessageService.instance.findAllChannels { (success) in
+            if success
+            {
+                // channels
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
