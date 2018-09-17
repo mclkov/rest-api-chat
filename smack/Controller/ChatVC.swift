@@ -13,11 +13,16 @@ class ChatVC: UIViewController {
     // Outlets
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var channelNameLabel: UILabel!
+    @IBOutlet weak var messageTxt: UITextField!
+    @IBOutlet weak var sendMessageBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.bindToKeyboard()
+        self.setupView()
+        
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
+        sendMessageBtn.addTarget(self, action: #selector(self.sendMessagePressed), for: .touchUpInside)
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
@@ -85,11 +90,46 @@ class ChatVC: UIViewController {
         }
     }
 
+    @objc func sendMessagePressed()
+    {
+        if AuthService.instance.isLoggedIn
+        {
+            guard let channelId = MessageService.instance.selectedChannel?.id else
+            {
+                return
+            }
+            
+            guard let message = messageTxt.text else
+            {
+                return
+            }
+            
+            SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
+                if success
+                {
+                    self.messageTxt.text = ""
+                    self.messageTxt.resignFirstResponder()
+                }
+            })
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func setupView()
+    {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ChatVC.handleTap))
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc func handleTap()
+    {
+        view.endEditing(true)
+    }
 
     /*
     // MARK: - Navigation
