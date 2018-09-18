@@ -8,9 +8,14 @@
 
 import UIKit
 
-class ChatVC: UIViewController {
+class ChatVC:
+    UIViewController,
+    UITableViewDelegate,
+    UITableViewDataSource
+{
 
     // Outlets
+    @IBOutlet weak var messageTV: UITableView!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var channelNameLabel: UILabel!
     @IBOutlet weak var messageTxt: UITextField!
@@ -20,6 +25,11 @@ class ChatVC: UIViewController {
         super.viewDidLoad()
         view.bindToKeyboard()
         self.setupView()
+        
+        messageTV.estimatedRowHeight = 80
+        messageTV.rowHeight = UITableViewAutomaticDimension
+        messageTV.dataSource = self
+        messageTV.delegate = self
         
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         sendMessageBtn.addTarget(self, action: #selector(self.sendMessagePressed), for: .touchUpInside)
@@ -86,7 +96,10 @@ class ChatVC: UIViewController {
             return
         }
         MessageService.instance.findAllMessagesOfChannel(channelId: channelId) { (success) in
-            
+            if success
+            {
+                self.messageTV.reloadData()
+            }
         }
     }
 
@@ -129,6 +142,25 @@ class ChatVC: UIViewController {
     @objc func handleTap()
     {
         view.endEditing(true)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = messageTV.dequeueReusableCell(withIdentifier: "messageCell", for: indexPath) as? MessageCell
+        {
+            let message = MessageService.instance.messages[indexPath.row]
+            cell.configureCell(messageArray: message)
+            return cell
+        }else{
+            return MessageCell()
+        }
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return MessageService.instance.messages.count
     }
 
     /*

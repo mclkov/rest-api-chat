@@ -87,7 +87,7 @@ class ChannelVC: UIViewController, UITableViewDelegate, UITableViewDataSource
         {
             loginBtn.setTitle(UserDataService.instance.name, for: .normal)
             avatarImage.image = UIImage(named: UserDataService.instance.avatarName)
-            avatarImage.backgroundColor = UserDataService.instance.returnUIColor()
+            avatarImage.backgroundColor = UserDataService.instance.returnUIColor(components: UserDataService.instance.avatarColor)
         } else {
             loginBtn.setTitle("Login", for: .normal)
             avatarImage.image = UIImage(named: "menuProfileIcon")

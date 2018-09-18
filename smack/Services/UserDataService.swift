@@ -50,9 +50,9 @@ class UserDataService
         MessageService.instance.clearChannels()
     }
     
-    func returnUIColor() -> UIColor
+    func returnUIColor(components: String) -> UIColor
     {
-        let scanner = Scanner(string: self.avatarColor)
+        let scanner = Scanner(string: components)
         let skipped = CharacterSet(charactersIn: "[], ")
         let comma = CharacterSet(charactersIn: ",")
         
