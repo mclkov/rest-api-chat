@@ -21,10 +21,15 @@ class ChatVC:
     @IBOutlet weak var messageTxt: UITextField!
     @IBOutlet weak var sendMessageBtn: UIButton!
     
+    // Variables
+    var isWriting = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.bindToKeyboard()
         self.setupView()
+        
+        sendMessageBtn.isHidden = true
         
         messageTV.estimatedRowHeight = 80
         messageTV.rowHeight = UITableViewAutomaticDimension
@@ -33,6 +38,7 @@ class ChatVC:
         
         menuBtn.addTarget(self.revealViewController(), action: #selector(SWRevealViewController.revealToggle(_:)), for: .touchUpInside)
         sendMessageBtn.addTarget(self, action: #selector(self.sendMessagePressed), for: .touchUpInside)
+        messageTxt.addTarget(self, action: #selector(self.messageWriting), for: .editingChanged)
         
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
@@ -42,11 +48,38 @@ class ChatVC:
         
         if AuthService.instance.isLoggedIn
         {
+            SocketService.instance.getChatMessage(completion: { (success) in
+                if success
+                {
+                    self.messageTV.reloadData()
+                    if MessageService.instance.messages.count > 0
+                    {
+                        let endIndex = IndexPath(row: MessageService.instance.messages.count-1, section: 0)
+                        self.messageTV.scrollToRow(at: endIndex, at: .bottom, animated: false)
+                    }
+                }
+            })
+            
             AuthService.instance.findUserByEmail(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
             })
         }
         // Do any additional setup after loading the view.
+    }
+    
+    @objc func messageWriting()
+    {
+        if messageTxt.text == ""
+        {
+            isWriting = false
+            sendMessageBtn.isHidden = true
+        }else{
+            if isWriting == false
+            {
+                sendMessageBtn.isHidden = false
+            }
+            isWriting = true
+        }
     }
     
     @objc func userDataDidChange(_ notif: Notification)
@@ -57,6 +90,7 @@ class ChatVC:
             // get channels
             onLoginGetMessages()
         }else{
+            messageTV.reloadData()
             channelNameLabel.text = "Please, Log In"
         }
     }

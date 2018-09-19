@@ -48,6 +48,7 @@ class UserDataService
         
         AuthService.instance.logoutUser()
         MessageService.instance.clearChannels()
+        MessageService.instance.clearMessages()
     }
     
     func returnUIColor(components: String) -> UIColor
