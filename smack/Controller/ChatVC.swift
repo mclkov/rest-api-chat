@@ -20,6 +20,7 @@ class ChatVC:
     @IBOutlet weak var channelNameLabel: UILabel!
     @IBOutlet weak var messageTxt: UITextField!
     @IBOutlet weak var sendMessageBtn: UIButton!
+    @IBOutlet weak var isTypingLabel: UILabel!
     
     // Variables
     var isWriting = false
@@ -60,6 +61,41 @@ class ChatVC:
                 }
             })
             
+            SocketService.instance.getTypingUsers({ (typingUsers) in
+                guard let channelId = MessageService.instance.selectedChannel?.id else
+                {
+                    return
+                }
+                var names = ""
+                var numberOfTypers = 0
+                
+                for (typingUser, channel) in typingUsers
+                {
+                    if typingUser != UserDataService.instance.name && channel == channelId
+                    {
+                        if names == ""
+                        {
+                            names = typingUser
+                        }else{
+                            names = "\(names), \(typingUser)"
+                        }
+                        numberOfTypers += 1
+                    }
+                }
+                
+                if numberOfTypers > 0 && AuthService.instance.isLoggedIn == true
+                {
+                    var verb = "is"
+                    if numberOfTypers > 1
+                    {
+                        verb = "are"
+                    }
+                    self.isTypingLabel.text = "\(names) \(verb) typing a message"
+                }else{
+                    self.isTypingLabel.text = ""
+                }
+            })
+            
             AuthService.instance.findUserByEmail(completion: { (success) in
                 NotificationCenter.default.post(name: NOTIFICATION_USER_DATA_CHANGED, object: nil)
             })
@@ -69,14 +105,20 @@ class ChatVC:
     
     @objc func messageWriting()
     {
+        guard let channelId = MessageService.instance.selectedChannel?.id else
+        {
+            return
+        }
         if messageTxt.text == ""
         {
             isWriting = false
             sendMessageBtn.isHidden = true
+            SocketService.instance.manager.defaultSocket.emit("stopType", UserDataService.instance.name, channelId)
         }else{
             if isWriting == false
             {
                 sendMessageBtn.isHidden = false
+                SocketService.instance.manager.defaultSocket.emit("startType", UserDataService.instance.name, channelId)
             }
             isWriting = true
         }
@@ -154,6 +196,7 @@ class ChatVC:
             SocketService.instance.addMessage(messageBody: message, userId: UserDataService.instance.id, channelId: channelId, completion: { (success) in
                 if success
                 {
+                    SocketService.instance.manager.defaultSocket.emit("stopType", UserDataService.instance.name, channelId)
                     self.messageTxt.text = ""
                     self.messageTxt.resignFirstResponder()
                 }

@@ -614,6 +614,12 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qc7-Gn-Ynm">
+                                <rect key="frame" x="8" y="621" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -629,11 +635,14 @@
                             <constraint firstItem="XFK-I3-S7A" firstAttribute="top" secondItem="jMN-Tp-uQL" secondAttribute="top" id="meK-8s-MEW"/>
                             <constraint firstItem="uaT-68-34I" firstAttribute="top" secondItem="sRh-Up-5Mp" secondAttribute="bottom" constant="30" id="pRF-b1-MXg"/>
                             <constraint firstItem="jsr-zP-gIg" firstAttribute="trailing" secondItem="sRh-Up-5Mp" secondAttribute="trailing" id="riZ-uc-A1H"/>
+                            <constraint firstItem="qc7-Gn-Ynm" firstAttribute="leading" secondItem="jsr-zP-gIg" secondAttribute="leading" constant="8" id="rsN-tH-RrU"/>
+                            <constraint firstItem="uaT-68-34I" firstAttribute="top" secondItem="qc7-Gn-Ynm" secondAttribute="bottom" constant="6" id="xkL-n2-U0H"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jsr-zP-gIg"/>
                     </view>
                     <connections>
                         <outlet property="channelNameLabel" destination="i5B-GV-umF" id="iDZ-z0-crD"/>
+                        <outlet property="isTypingLabel" destination="qc7-Gn-Ynm" id="aiJ-Yq-J3V"/>
                         <outlet property="menuBtn" destination="NNF-8z-TKc" id="mhT-3P-67c"/>
                         <outlet property="messageTV" destination="sRh-Up-5Mp" id="Esi-pq-QFb"/>
                         <outlet property="messageTxt" destination="uaT-68-34I" id="OPf-M2-Ffx"/>
