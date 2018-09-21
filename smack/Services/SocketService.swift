@@ -84,7 +84,7 @@ class SocketService: NSObject
         completion(true)
     }
     
-    func getChatMessage(completion: @escaping CompletionHandler)
+    func getChatMessage(completion: @escaping (_ newMessage: Message) -> Void)
     {
         let socket = manager.defaultSocket
         socket.on("messageCreated") { (dataArray, ack) in
@@ -128,14 +128,18 @@ class SocketService: NSObject
                 return
             }
             
-            if channelId == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn
-            {
-                let newMessage = Message(message: body, userId: userId, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: messageId, timeStamp: timeStamp)
-                MessageService.instance.messages.append(newMessage)
-                completion(true)
-            }else{
-                completion(false)
-            }
+            let newMessage = Message(message: body, userId: userId, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: messageId, timeStamp: timeStamp)
+            
+            completion(newMessage)
+            
+//            if channelId == MessageService.instance.selectedChannel?.id && AuthService.instance.isLoggedIn
+//            {
+//                let newMessage = Message(message: body, userId: userId, userName: userName, channelId: channelId, userAvatar: userAvatar, userAvatarColor: userAvatarColor, id: messageId, timeStamp: timeStamp)
+//                MessageService.instance.messages.append(newMessage)
+//                completion(true)
+//            }else{
+//                completion(false)
+//            }
         }
     }
     

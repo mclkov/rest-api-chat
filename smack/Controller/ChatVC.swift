@@ -49,10 +49,12 @@ class ChatVC:
         
         if AuthService.instance.isLoggedIn
         {
-            SocketService.instance.getChatMessage(completion: { (success) in
-                if success
+            SocketService.instance.getChatMessage(completion: { (newMessage) in
+                if newMessage.channelId == MessageService.instance.selectedChannel?.id
                 {
+                    MessageService.instance.messages.append(newMessage)
                     self.messageTV.reloadData()
+                    
                     if MessageService.instance.messages.count > 0
                     {
                         let endIndex = IndexPath(row: MessageService.instance.messages.count-1, section: 0)
@@ -60,6 +62,18 @@ class ChatVC:
                     }
                 }
             })
+            
+//            SocketService.instance.getChatMessage(completion: { (message) in
+//                if success
+//                {
+//                    self.messageTV.reloadData()
+//                    if MessageService.instance.messages.count > 0
+//                    {
+//                        let endIndex = IndexPath(row: MessageService.instance.messages.count-1, section: 0)
+//                        self.messageTV.scrollToRow(at: endIndex, at: .bottom, animated: false)
+//                    }
+//                }
+//            })
             
             SocketService.instance.getTypingUsers({ (typingUsers) in
                 guard let channelId = MessageService.instance.selectedChannel?.id else
