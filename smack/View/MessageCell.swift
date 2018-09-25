@@ -27,6 +27,11 @@ class MessageCell: UITableViewCell {
         userNameLabel.text = messageArray.userName
         userImage.image = UIImage(named: messageArray.userAvatar)
         userImage.backgroundColor = UserDataService.instance.returnUIColor(components: messageArray.userAvatarColor)
+        
+        guard var isoDate = messageArray.timeStamp else
+        {
+            return
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
